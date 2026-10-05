@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thoyajaksh's Jee Hub</title>
+<meta name="description" content="JEE Main & Advanced and competitive exam resources: books, notes, formulas, shortcuts, PYQs, DPPs and more.">
+<style>
+:root{--bg:#050507;--card:#0d0d16;--text:#e9e9f2;--muted:#9292a7;--blue:#00aaff;--cyan:#00f0ff;--purple:#8b5cf6;--pink:#ff3cac;--orange:#ff9d00;--green:#00ff9d;--border:rgba(255,255,255,.09);--glow-blue:0 0 25px rgba(0,170,255,.3)}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;background:radial-gradient(circle at 10% 10%,rgba(0,170,255,.08),transparent 30%),radial-gradient(circle at 90% 20%,rgba(139,92,246,.08),transparent 30%),var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;background:radial-gradient(circle at 15% 20%,rgba(0,170,255,.12),transparent 30%),radial-gradient(circle at 85% 25%,rgba(139,92,246,.12),transparent 30%),radial-gradient(circle at 50% 90%,rgba(255,60,172,.08),transparent 35%),linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:auto,auto,auto,40px 40px,40px 40px;pointer-events:none;z-index:-1}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+::selection{background:var(--purple);color:#fff}
+::-webkit-scrollbar{width:8px}::-webkit-scrollbar-thumb{background:linear-gradient(var(--cyan),var(--purple));border-radius:8px}::-webkit-scrollbar-track{background:var(--bg)}
+
+/* NEW: scroll progress bar + back to top */
+#scroll-bar{position:fixed;top:0;left:0;height:3px;width:0;z-index:100000;background:linear-gradient(90deg,var(--cyan),var(--purple),var(--pink));box-shadow:0 0 12px var(--cyan)}
+#to-top{position:fixed;right:18px;bottom:18px;width:44px;height:44px;border-radius:50%;border:1px solid var(--cyan);background:rgba(5,5,7,.85);color:var(--cyan);font-size:18px;cursor:pointer;z-index:900;opacity:0;visibility:hidden;transition:.3s;box-shadow:var(--glow-blue)}
+#to-top.show{opacity:1;visibility:visible}
+#to-top:hover{transform:translateY(-3px)}
+
+/* WELCOME */
+#welcome-screen{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at center,rgba(0,170,255,.14),transparent 35%),rgba(3,4,10,.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);transition:opacity .6s,visibility .6s}
+#welcome-screen.hide{opacity:0;visibility:hidden;pointer-events:none}
+.welcome-content{text-align:center;animation:welcomeEnter 1s ease forwards}
+.welcome-brand{color:var(--cyan);font-size:13px;font-weight:700;letter-spacing:5px;margin-bottom:14px;text-shadow:0 0 20px rgba(0,240,255,.7)}
+.welcome-content h1{font-size:clamp(28px,6vw,55px);font-weight:800;background:linear-gradient(90deg,#fff,#00f0ff,#8b5cf6,#ff3cac);-webkit-background-clip:text;background-clip:text;color:transparent}
+.welcome-content p{margin-top:14px;color:var(--muted);font-size:14px}
+.welcome-line{width:0;height:2px;margin:24px auto 0;background:linear-gradient(90deg,#00f0ff,#8b5cf6,#ff3cac);box-shadow:0 0 15px rgba(0,240,255,.6);animation:welcomeLine 3.6s ease forwards}
+@keyframes welcomeEnter{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}
+@keyframes welcomeLine{to{width:180px}}
+
+/* HEADER */
+header{position:sticky;top:0;z-index:1000;background:rgba(5,5,7,.86);backdrop-filter:blur(18px);border-bottom:1px solid var(--border)}
+.navbar{max-width:1250px;margin:auto;min-height:75px;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:12px;cursor:pointer}
+.brand img{width:48px;height:48px;object-fit:contain;border-radius:12px;background:#fff;padding:4px;box-shadow:0 0 15px rgba(0,170,255,.3)}
+.brand-text{line-height:1.1}
+.brand-title{font-size:19px;font-weight:900;letter-spacing:1px;background:linear-gradient(90deg,var(--cyan),var(--blue),var(--purple),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+.brand-sub{font-size:10px;color:var(--muted);letter-spacing:2px;margin-top:4px}
+.nav-buttons{display:flex;gap:8px}
+.nav-btn{border:1px solid var(--border);background:rgba(255,255,255,.035);color:var(--text);padding:9px 13px;border-radius:10px;cursor:pointer;font-size:12px;transition:.25s}
+.nav-btn:hover{border-color:var(--blue);color:var(--cyan);box-shadow:var(--glow-blue)}
+
+/* HERO */
+.hero{max-width:1250px;margin:auto;padding:75px 20px 25px;text-align:center}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border:1px solid rgba(0,240,255,.25);background:rgba(0,240,255,.05);border-radius:100px;color:var(--cyan);font-size:11px;font-weight:bold;letter-spacing:1px;box-shadow:var(--glow-blue)}
+.badge-dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green)}
+.hero h1{margin-top:25px;font-size:clamp(32px,6vw,65px);line-height:.95;font-weight:800;letter-spacing:-1px;background:linear-gradient(90deg,#fff,var(--cyan),var(--blue),var(--purple),var(--pink),var(--cyan));background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:flow 8s linear infinite}
+@keyframes flow{to{background-position:250% 0}}
+.hero p{max-width:700px;margin:18px auto 0;color:var(--muted);line-height:1.7;font-size:14px}
+
+/* LIVE UPDATES */
+.live-updates{max-width:750px;margin:28px auto 0;display:flex;align-items:stretch;background:rgba(8,10,20,.92);border:1px solid rgba(0,234,255,.22);border-radius:14px;overflow:hidden;box-shadow:0 0 25px rgba(0,170,255,.06)}
+.live-label{flex-shrink:0;display:flex;align-items:center;gap:7px;padding:10px 15px;background:linear-gradient(135deg,rgba(0,234,255,.13),rgba(139,92,246,.13));border-right:1px solid rgba(255,255,255,.08);color:var(--cyan);font-size:10px;font-weight:900;letter-spacing:1px;white-space:nowrap}
+.live-dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green);animation:livePulse 1.5s infinite}
+@keyframes livePulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.75)}}
+.live-ticker{flex:1;overflow:hidden;white-space:nowrap;display:flex;align-items:center;min-width:0}
+.live-track{display:inline-flex;align-items:center;white-space:nowrap;animation:tickerScroll 25s linear infinite}
+.live-track:hover{animation-play-state:paused}
+.live-item{display:inline-flex;align-items:center;margin-right:70px;color:#d8d8e5;font-size:12px}
+.live-item::before{content:"•";color:var(--cyan);margin-right:10px;font-size:15px}
+@keyframes tickerScroll{to{transform:translateX(-50%)}}
+
+/* SEARCH */
+.search-box{max-width:750px;margin:32px auto 0;position:relative}
+.search-box input{width:100%;padding:17px 20px 17px 50px;border-radius:15px;border:1px solid rgba(0,170,255,.25);background:rgba(10,10,18,.9);color:#fff;outline:none;font-size:14px;box-shadow:0 0 25px rgba(0,170,255,.07);transition:.25s}
+.search-box input:focus{border-color:var(--cyan);box-shadow:0 0 25px rgba(0,240,255,.15)}
+.search-icon{position:absolute;left:18px;top:50%;transform:translateY(-50%);color:var(--cyan);font-size:18px}
+
+/* MAIN */
+.container{max-width:1250px;margin:auto;padding:20px}
+.section{margin:55px 0}
+.section-heading{display:flex;justify-content:space-between;align-items:end;margin-bottom:20px;gap:15px}
+.section-title{font-size:25px;color:#fff;font-weight:900}
+.section-title span{color:var(--cyan)}
+.section-description{color:var(--muted);font-size:12px;margin-top:5px}
+
+/* VAULT */
+.vault{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:13px}
+.vault-card{position:relative;padding:20px;min-height:135px;border-radius:17px;background:linear-gradient(145deg,rgba(255,255,255,.06),rgba(255,255,255,.015));cursor:pointer;overflow:hidden;transition:.3s}
+.vault-card::before{content:"";position:absolute;width:120px;height:120px;right:-50px;bottom:-50px;border-radius:50%;background:var(--accent);filter:blur(35px);opacity:.12}
+.vault-card:hover{transform:translateY(-5px);border-color:var(--accent);box-shadow:0 10px 35px rgba(0,0,0,.4),0 0 20px color-mix(in srgb,var(--accent),transparent 75%)}
+.vault-icon{font-size:28px;margin-bottom:13px}
+.vault-card h3{font-size:15px;color:#fff}
+.vault-card p{color:var(--muted);font-size:11px;margin-top:7px;line-height:1.5}
+
+/* NEW: shine sweep on hover for all cards */
+.vault-card::after,.subject-card::after,.class-card::after,.jee-card::after,.competitive-card::after{content:"";position:absolute;top:0;left:-120%;width:60%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.08),transparent);transform:skewX(-20deg);transition:left .7s;pointer-events:none}
+.vault-card:hover::after,.subject-card:hover::after,.class-card:hover::after,.jee-card:hover::after,.competitive-card:hover::after{left:140%}
+
+/* SUBJECTS */
+.subject-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.subject-card{position:relative;padding:25px;border-radius:20px;min-height:190px;overflow:hidden;background:var(--card);transition:.3s;cursor:pointer}
+.subject-card:hover{transform:translateY(-7px);box-shadow:0 15px 40px rgba(0,0,0,.45)}
+.subject-card.physics:hover{border-color:var(--blue)}
+.subject-card.chemistry:hover{border-color:var(--pink)}
+.subject-card.maths:hover{border-color:var(--purple)}
+.subject-icon{font-size:40px;margin-bottom:20px}
+.subject-card h3{font-size:22px;color:#fff}
+.subject-card p{margin-top:8px;color:var(--muted);font-size:12px}
+
+/* PANELS */
+.panel{display:none;margin-top:25px;animation:fadeIn .3s ease}
+.panel.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.back-btn{display:inline-block;margin-bottom:18px;padding:9px 13px;border:1px solid var(--border);background:rgba(255,255,255,.04);color:var(--cyan);border-radius:10px;cursor:pointer;font-size:12px;transition:.25s}
+.back-btn:hover{border-color:var(--cyan);box-shadow:var(--glow-blue)}
+.class-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.class-card{position:relative;overflow:hidden;padding:25px;border-radius:18px;background:linear-gradient(145deg,#11111b,#09090e);cursor:pointer;transition:.25s}
+.class-card:hover{border-color:var(--cyan);transform:translateY(-4px);box-shadow:var(--glow-blue)}
+.class-card h3{font-size:20px}
+.class-card p{color:var(--muted);font-size:12px;margin-top:8px}
+.chapter-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:11px}
+.chapter{padding:15px;border-radius:13px;background:rgba(255,255,255,.035);cursor:pointer;transition:.2s}
+.chapter:hover{border-color:var(--blue);color:var(--cyan);background:rgba(0,170,255,.06);transform:translateX(3px)}
+.chapter-number{color:var(--blue);font-size:10px;font-weight:bold}
+.chapter-name{display:block;margin-top:5px;font-size:13px;color:#e8e8ef}
+
+/* RESOURCES */
+.resource-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.resource-card{padding:18px;background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018));border-radius:16px;transition:.25s}
+.resource-card:hover{transform:translateY(-4px);box-shadow:var(--glow-blue)}
+.resource-type{display:inline-block;padding:5px 8px;border-radius:7px;background:rgba(0,170,255,.08);color:var(--cyan);font-size:9px;font-weight:bold;text-transform:uppercase;letter-spacing:.5px}
+.resource-card h3{margin-top:12px;font-size:15px;color:#fff}
+.resource-card p{margin-top:7px;color:var(--muted);font-size:11px;line-height:1.5}
+.resource-btn{display:inline-block;margin-top:15px;padding:9px 13px;border:0;border-radius:9px;text-decoration:none;color:#fff;background:linear-gradient(90deg,var(--blue),var(--purple));font-size:11px;font-weight:bold;cursor:pointer;transition:.2s}
+.resource-btn:hover{transform:scale(1.04);box-shadow:0 0 20px rgba(0,170,255,.3)}
+.resource-btn.soon{background:rgba(255,255,255,.06);color:var(--muted);cursor:not-allowed;pointer-events:none}
+
+/* WHITE BOX BORDERS + RANDOM CLICK COLOR */
+.vault-card,.subject-card,.class-card,.chapter,.resource-card,.jee-card,.competitive-card,.stat{border:1px solid rgba(255,255,255,.85);transition:.25s ease}
+.box-selected{border-color:var(--click-color)!important;box-shadow:0 0 12px var(--click-color),0 0 28px color-mix(in srgb,var(--click-color),transparent 65%)}
+
+/* JEE CARDS */
+.jee-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.jee-card{position:relative;overflow:hidden;padding:25px;border-radius:20px;background:linear-gradient(145deg,rgba(139,92,246,.08),rgba(0,170,255,.03))}
+.jee-card h3{font-size:22px}
+.jee-card p{color:var(--muted);font-size:12px;line-height:1.6;margin-top:9px}
+.jee-card button{margin-top:17px;padding:10px 15px;border:1px solid var(--border);background:rgba(255,255,255,.05);color:#fff;border-radius:9px;cursor:pointer;transition:.25s}
+.jee-card button:hover{border-color:var(--cyan);color:var(--cyan)}
+
+/* COMPETITIVE */
+.competitive-exams{padding:55px 0;max-width:1200px;margin:auto}
+.competitive-exams .section-title{margin-bottom:25px}
+.competitive-exams .section-title h2{font-size:24px;margin-bottom:6px}
+.competitive-exams .section-title h2 span{color:#00eaff}
+.competitive-exams .section-title p{color:#8d8d9d;font-size:13px;font-weight:400}
+.competitive-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.competitive-card{position:relative;overflow:hidden;background:rgba(10,10,20,.78);border-radius:14px;padding:22px;min-height:150px}
+.competitive-card:hover{transform:translateY(-4px);box-shadow:0 0 22px rgba(0,234,255,.12)}
+.exam-icon{font-size:25px;margin-bottom:10px}
+.competitive-card h3{color:#fff;font-size:18px;margin-bottom:8px}
+.competitive-card p{color:#9999a8;font-size:12px;line-height:1.6;margin-bottom:18px}
+.competitive-card button{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#fff;padding:9px 13px;border-radius:7px;cursor:pointer;font-size:11px;transition:.25s}
+.competitive-card button:hover{border-color:#00eaff;color:#00eaff}
+
+/* PROGRESS & ANALYSIS */
+#progress-panel{display:none;position:fixed;inset:0;z-index:9999;overflow-y:auto;padding:30px;background:var(--bg)}
+#progress-panel.active{display:block;animation:fadeIn .3s ease}
+.progress-header{max-width:1100px;margin:0 auto 25px}
+.progress-header h2{margin-top:20px;font-size:28px}
+.progress-header p{color:var(--muted)}
+.progress-inputs{max-width:1100px;margin:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+.progress-inputs input,.progress-inputs select,.progress-inputs button{padding:13px;border-radius:10px;border:1px solid var(--border);background:rgba(255,255,255,.06);color:#fff;font-size:13px}
+.progress-inputs select option{background:#0d0d16}
+.progress-inputs button{cursor:pointer;background:linear-gradient(90deg,var(--blue),var(--purple));font-weight:bold}
+.progress-stats{max-width:1100px;margin:25px auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:15px}
+.progress-stat{padding:20px;border-radius:15px;border:1px solid var(--border);background:rgba(255,255,255,.05)}
+.progress-stat span{display:block;color:var(--muted);font-size:12px}
+.progress-stat strong{display:block;margin-top:8px;font-size:25px;color:var(--cyan)}
+.analysis-box{max-width:1100px;margin:20px auto;padding:22px;border-radius:15px;border:1px solid var(--border);background:rgba(255,255,255,.05)}
+.analysis-box p{color:var(--muted);line-height:1.6}
+.bar{height:8px;border-radius:8px;background:rgba(255,255,255,.08);margin-top:12px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--cyan),var(--purple),var(--pink));transition:width .8s}
+.progress-table-wrapper{max-width:1100px;margin:20px auto;overflow-x:auto}
+.progress-table{width:100%;border-collapse:collapse}
+.progress-table th,.progress-table td{padding:13px;border-bottom:1px solid var(--border);text-align:left}
+.progress-table th{color:#fff}.progress-table td{color:var(--muted)}
+.clear-progress{display:block;margin:25px auto;padding:10px 18px;border-radius:10px;cursor:pointer;background:rgba(255,65,108,.1);border:1px solid #ff416c;color:#ff416c}
+
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:35px auto;max-width:900px}
+.stat{padding:18px;text-align:center;border-radius:14px;background:rgba(255,255,255,.025)}
+.stat strong{display:block;font-size:24px;background:linear-gradient(90deg,var(--cyan),var(--purple));-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat span{font-size:10px;color:var(--muted)}
+
+/* FOOTER */
+footer{margin-top:80px;padding:45px 20px;border-top:1px solid var(--border);text-align:center;background:rgba(0,0,0,.3)}
+.footer-logo{font-size:13px;font-weight:900;background:linear-gradient(90deg,var(--cyan),var(--blue),var(--purple),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+footer p{margin-top:9px;color:var(--muted);font-size:12px}
+.footer-line{width:100px;height:2px;margin:18px auto;background:linear-gradient(90deg,var(--cyan),var(--purple),var(--pink));border-radius:10px}
+.empty{padding:40px;text-align:center;color:var(--muted);border:1px dashed var(--border);border-radius:15px;grid-column:1/-1}
+
+/* MOBILE */
+@media(max-width:700px){
+.navbar{min-height:65px}
+.brand img{width:40px;height:40px}.brand-title{font-size:15px}.brand-sub{font-size:8px}
+.nav-buttons{display:none}
+.hero{padding-top:55px}.hero h1{letter-spacing:-2px}
+.stats{grid-template-columns:repeat(2,1fr)}
+.section{margin:40px 0}.section-heading{display:block}.section-title{font-size:21px}
+.live-updates{margin:24px 12px 0;border-radius:12px}.live-label{padding:10px;font-size:8px}.live-item{font-size:10px;margin-right:50px}
+.search-box{margin:28px 12px 0;width:auto}
+.competitive-exams{padding:40px 0}
+.competitive-grid{gap:12px}.competitive-card{padding:16px}.competitive-card h3{font-size:15px}.competitive-card p{font-size:10px}.competitive-card button{font-size:9px;padding:7px 9px}
+#progress-panel{padding:18px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.accent-blue{--accent:var(--blue)}.accent-cyan{--accent:var(--cyan)}.accent-purple{--accent:var(--purple)}.accent-pink{--accent:var(--pink)}.accent-orange{--accent:var(--orange)}.accent-green{--accent:var(--green)}
+
+/* ===== LIGHT POLISH ===== */
+.hero{position:relative}
+.hero::before{content:"";position:absolute;left:50%;top:40%;width:min(700px,90vw);height:260px;transform:translate(-50%,-50%);background:radial-gradient(ellipse,rgba(0,240,255,.10),rgba(139,92,246,.07) 50%,transparent 70%);filter:blur(40px);z-index:-1}
+.section-title span{text-shadow:0 0 14px rgba(0,240,255,.5)}
+.section-title::after{content:"";display:block;width:50px;height:3px;margin-top:8px;border-radius:3px;background:linear-gradient(90deg,var(--cyan),var(--pink));transition:width .4s}
+.section:hover>.section-heading .section-title::after{width:110px}
+.search-box input,.search-icon{position:relative;z-index:1}
+.search-icon{position:absolute}
+.vault-icon,.subject-icon,.exam-icon{display:inline-block;transition:transform .3s}
+.vault-card:hover .vault-icon,.subject-card:hover .subject-icon,.competitive-card:hover .exam-icon{transform:scale(1.15)}
+.vault-card:hover h3,.subject-card:hover h3,.competitive-card:hover h3,.jee-card:hover h3{text-shadow:0 0 12px rgba(0,240,255,.6)}
+.footer-line{box-shadow:0 0 12px var(--purple)}
+</style>
+</head>
+<body>
+<div id="scroll-bar"></div>
+<button id="to-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<!-- WELCOME -->
+<div id="welcome-screen">
+  <div class="welcome-content">
+    <div class="welcome-brand">TJH</div>
+    <h1>Welcome to THOEDGE Creations</h1>
+    <p>One brand. Many useful digital hubs.</p>
+    <div class="welcome-line"></div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="navbar">
+    <div class="brand" onclick="goHome()">
+      <img src="logo.png" alt="THOEDGE Logo">
+      <div class="brand-text">
+        <div class="brand-title">TJH-Thoyajaksh's Jee Hub</div>
+        <div class="brand-sub">• JEE MAIN & ADVANCED • COMPETITIVE EXAMS •</div>
+      </div>
+    </div>
+    <div class="nav-buttons">
+      <button class="nav-btn" onclick="goHome()">HOME</button>
+      <button class="nav-btn" onclick="showSection('vault-section')">VAULT</button>
+      <button class="nav-btn" onclick="showSection('subjects-section')">SUBJECTS</button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="badge"><span class="badge-dot"></span>JEE PREPARATION MODE❤️‍🔥</div>
+  <h1>ONE HUB. EVERY EXAM. EVERYTHING YOU NEED.</h1>
+  <p>Books • Notes • PYQs • DPPs • Formulas • Mock Tests</p>
+
+  <div class="live-updates">
+    <div class="live-label"><span class="live-dot"></span>JEE UPDATES</div>
+    <div class="live-ticker"><div class="live-track" id="liveTrack"></div></div>
+  </div>
+
+  <div class="search-box">
+    <span class="search-icon">⌕</span>
+    <input id="searchInput" type="text" placeholder="Search books, chapters, PYQs, formulas, DPPs..."
+      oninput="searchResources(false)" onkeydown="if(event.key==='Enter')searchResources(true)">
+  </div>
+</section>
+
+<div class="container">
+
+<div class="stats">
+  <div class="stat"><strong>PCM</strong><span>SUBJECTS</span></div>
+  <div class="stat"><strong>XI & XII</strong><span>CLASSES</span></div>
+  <div class="stat"><strong>∞</strong><span>RESOURCES</span></div>
+  <div class="stat"><strong>24/7</strong><span>ACCESS</span></div>
+</div>
+
+<!-- SEARCH RESULTS -->
+<section class="section panel" id="search-panel">
+  <div class="section-heading"><div>
+    <div class="section-title">🔎 SEARCH <span>RESULTS</span></div>
+    <div class="section-description">Matching resources and chapters.</div>
+  </div></div>
+  <div class="resource-grid" id="search-results"></div>
+</section>
+
+<!-- VAULT -->
+<section class="section" id="vault-section">
+  <div class="section-heading"><div>
+    <div class="section-title">⚡ RESOURCE <span>VAULT</span></div>
+    <div class="section-description">Global resources — independent of subjects and chapters.</div>
+  </div></div>
+  <div class="vault" id="vault-grid"></div>
+</section>
+
+<!-- GLOBAL RESOURCE DISPLAY -->
+<section class="section panel" id="global-panel">
+  <button class="back-btn" onclick="closePanel('global-panel')">← Back to Vault</button>
+  <div class="section-heading"><div>
+    <div class="section-title" id="global-title">Resource</div>
+    <div class="section-description">Your Google Drive resources will appear here.</div>
+  </div></div>
+  <div class="resource-grid" id="global-resources"></div>
+</section>
+
+<!-- SUBJECTS -->
+<section class="section" id="subjects-section">
+  <div class="section-heading"><div>
+    <div class="section-title">📚 <span>SUBJECTS</span></div>
+    <div class="section-description">Explore Class 11 and Class 12 chapter-wise resources.</div>
+  </div></div>
+  <div class="subject-grid">
+    <div class="subject-card physics" onclick="openSubject('Physics')"><div class="subject-icon">⚛️</div><h3>Physics</h3><p>Concepts • Formulas • PYQs • Problems</p></div>
+    <div class="subject-card chemistry" onclick="openSubject('Chemistry')"><div class="subject-icon">🧪</div><h3>Chemistry</h3><p>Physical • Organic • Inorganic</p></div>
+    <div class="subject-card maths" onclick="openSubject('Mathematics')"><div class="subject-icon">∑</div><h3>Mathematics</h3><p>Algebra • Calculus • Coordinate • More</p></div>
+  </div>
+</section>
+
+<section class="section panel" id="subject-panel">
+  <button class="back-btn" onclick="closePanel('subject-panel')">← Back to Subjects</button>
+  <div class="section-heading"><div>
+    <div class="section-title" id="subject-title">Subject</div>
+    <div class="section-description">Select your class.</div>
+  </div></div>
+  <div class="class-grid">
+    <div class="class-card" onclick="openClass(11)"><h3>Class 11</h3><p>Complete Class 11 chapter resources</p></div>
+    <div class="class-card" onclick="openClass(12)"><h3>Class 12</h3><p>Complete Class 12 chapter resources</p></div>
+  </div>
+</section>
+
+<section class="section panel" id="chapter-panel">
+  <button class="back-btn" onclick="closePanel('chapter-panel')">← Back</button>
+  <div class="section-heading"><div>
+    <div class="section-title" id="chapter-title">Chapters</div>
+    <div class="section-description">Select a chapter.</div>
+  </div></div>
+  <div class="chapter-grid" id="chapter-list"></div>
+</section>
+
+<section class="section panel" id="chapter-resource-panel">
+  <button class="back-btn" onclick="closePanel('chapter-resource-panel')">← Back to Chapters</button>
+  <div class="section-heading"><div>
+    <div class="section-title" id="chapter-resource-title">Resources</div>
+    <div class="section-description">Chapter-wise resources.</div>
+  </div></div>
+  <div class="resource-grid" id="chapter-resources"></div>
+</section>
+
+<!-- JEE SECTIONS -->
+<section class="section">
+  <div class="section-heading"><div>
+    <div class="section-title">🎯 <span>JEE SECTIONS</span></div>
+    <div class="section-description">Dedicated preparation areas.</div>
+  </div></div>
+  <div class="jee-grid">
+    <div class="jee-card"><h3>JEE Main</h3><p>PYQs, mock tests, revision resources, formulas, important questions and Main-focused preparation.</p><button onclick="openGlobal('JEE Main')">Open JEE Main →</button></div>
+    <div class="jee-card"><h3>JEE Advanced</h3><p>Advanced PYQs, challenging problems, concepts, revision and Advanced-focused resources.</p><button onclick="openGlobal('JEE Advanced')">Open JEE Advanced →</button></div>
+  </div>
+</section>
+
+<!-- COMPETITIVE EXAMS -->
+<section class="competitive-exams">
+  <div class="section-title">
+    <h2>🎯 <span>COMPETITIVE EXAMS</span></h2>
+    <p>Preparation resources for major entrance and competitive exams.</p>
+  </div>
+  <div class="competitive-grid" id="exam-grid"></div>
+</section>
+
+</div>
+<!-- PROGRESS & ANALYSIS -->
+<section id="progress-panel">
+  <div class="progress-header">
+    <button class="back-btn" onclick="closeProgressAnalysis()">← Back to Vault</button>
+    <h2>📊 Progress & Analysis</h2>
+    <p>Log your tests. Data stays saved in this browser.</p>
+  </div>
+  <div class="progress-inputs">
+    <input id="pTest" type="text" placeholder="Test name">
+    <select id="pSubject"><option>Full Syllabus</option><option>Physics</option><option>Chemistry</option><option>Mathematics</option></select>
+    <input id="pMarks" type="number" placeholder="Marks scored">
+    <input id="pTotal" type="number" placeholder="Total marks" value="300">
+    <button onclick="addProgress()">Add Test</button>
+  </div>
+  <div class="progress-stats">
+    <div class="progress-stat"><span>Tests Taken</span><strong id="sCount">0</strong></div>
+    <div class="progress-stat"><span>Average %</span><strong id="sAvg">0%</strong></div>
+    <div class="progress-stat"><span>Best %</span><strong id="sBest">0%</strong></div>
+    <div class="progress-stat"><span>Latest %</span><strong id="sLast">0%</strong></div>
+  </div>
+  <div class="analysis-box"><p id="analysisText">Add your first test to see analysis.</p><div class="bar"><i id="analysisBar"></i></div></div>
+  <div class="progress-table-wrapper">
+    <table class="progress-table">
+      <thead><tr><th>Date</th><th>Test</th><th>Subject</th><th>Score</th><th>%</th></tr></thead>
+      <tbody id="progressBody"></tbody>
+    </table>
+  </div>
+  <button class="clear-progress" onclick="clearProgress()">Clear all data</button>
+</section>
+
+<footer>
+  <div class="footer-logo">Copyright © 2026 • TJH-Thoyajaksh's Jee Hub</div>
+  <div class="footer-line"></div>
+  <p>Founded By Matta Thoyajaksh • Founder of thoEdge</p>
+</footer>
+
+<script>
+/* ================= DATA ================= */
+const updates=[
+ "📢 JEE Main 2027 registration by October end",
+ "📚 New resources are added regularly",
+ "🎯 Track your tests in Progress & Analysis",
+ "⚡ Use the search bar to find any chapter fast"
+];
+
+const vaultItems=[
+ ["blue","📚","Books","JEE reference books and study material.","Books"],
+ ["cyan","📖","Notes","Preparation notes and many useful resources.","Notes"],
+ ["purple","📝","DPPs","Daily practice problems.","DPPs"],
+ ["pink","🧠","Question Banks","Practice collections and problem sets.","Question Banks"],
+ ["orange","📑","PYQ Collections","Previous year question collections.","PYQ Collections"],
+ ["green","📦","Modules","Complete institute-style modules.","Modules"],
+ ["cyan","⚡","Formula Mega Pack","Formula sheets and revision formulas.","Formula Mega Pack"],
+ ["purple","🚀","Shortcut Vault","Fast methods and JEE shortcuts.","Shortcut Vault"],
+ ["blue","📘","NCERT Library","NCERT-focused preparation resources.","NCERT Library"],
+ ["pink","🎯","Mock Tests","Full and subject-wise mock tests.","Mock Tests"],
+ ["orange","🔄","Revision","Last-minute and rapid revision material.","Revision Material"],
+ ["blue","🎥","Video Lectures","Physics, Chemistry & Mathematics lecture links.","Video Lectures"],
+ ["cyan","📅","Time Table & Day Planning","Study schedules, daily plans and PDF resources.","Time Table & Day Planning"],
+ ["green","📊","Progress & Analysis","Track marks, tests, questions and improvement.",null],
+ ["purple","💎","THOEDGE Picks","Resources personally recommended by THOEDGE.","THOEDGE Picks"]
+];
+
+const exams=[
+ ["📗","BITSAT","Physics, Chemistry, Mathematics, English & Logical Reasoning resources."],
+ ["📕","MHT-CET","PCM preparation, formulas, PYQs, mock tests and revision resources."],
+ ["📘","AP EAPCET","Engineering entrance preparation, PYQs, formulas and practice."],
+ ["📙","TS EAPCET","Complete engineering entrance preparation and practice resources."],
+ ["📓","VITEEE","VIT entrance preparation with concepts, formulas and practice."],
+ ["📒","COMEDK","PCM concepts, previous questions, revision and mock tests."],
+ ["📘","WBJEE","Engineering entrance resources, PYQs and exam-focused practice."],
+ ["📕","NEST","Science entrance preparation, concepts and practice resources."],
+ ["🔭📖","IISER IAT","Science aptitude preparation and subject-wise practice."],
+ ["🎓","CUET","University entrance preparation, practice and revision resources."],
+ ["🩺","NEET","Physics, Chemistry and Biology preparation resources."],
+ ["🌐","OTHER","More entrance and competitive examination resources."]
+];
+
+const L="YOUR_GOOGLE_DRIVE_LINK";
+const R=(t,d,l)=>({title:t,description:d,link:l||L});
+const trio=(s,d)=>["Physics","Chemistry","Mathematics"].map(x=>R(x+" "+s,d));
+
+/* ADD YOUR GOOGLE DRIVE LINKS HERE (replace YOUR_GOOGLE_DRIVE_LINK) */
+const globalResources={
+ "Books":[R("Physics Reference Book","Add your Google Drive book link here.","https://drive.google.com/drive/folders/1jG9DXDZyaRTIUWc4krkiZzmduJZORHD_"),R("Chemistry Reference Book","Add your Google Drive book link here."),R("Mathematics Reference Book","Add your Google Drive book link here.")],
+ "Notes":[R("JEE Preparation Notes","Complete preparation guide.")],
+ "DPPs":trio("DPP Collection","Daily Practice Problems."),
+ "Question Banks":[R("JEE Question Bank","Important practice questions.")],
+ "PYQ Collections":[R("JEE Main PYQ Collection","Previous Year Questions."),R("JEE Advanced PYQ Collection","Previous Year Questions.")],
+ "Modules":trio("Module","Complete module."),
+ "Formula Mega Pack":trio("Formula Mega Pack","Complete formula collection."),
+ "Shortcut Vault":trio("Shortcuts","Quick methods and shortcuts."),
+ "NCERT Library":trio("NCERT","NCERT resources."),
+ "Mock Tests":[R("JEE Main Mock Tests","Mock test collection."),R("JEE Advanced Mock Tests","Mock test collection.")],
+ "Revision Material":[R("Rapid Revision Pack","Quick revision resources.")],
+ "Video Lectures":trio("Video Lectures","Lecture links."),
+ "Time Table & Day Planning":[R("Study Time Table","Daily and weekly planner PDF.")],
+ "THOEDGE Picks":[R("THOEDGE Recommended Resources","Resources selected for JEE preparation.")],
+ "JEE Main":[R("JEE Main PYQs","JEE Main previous year questions."),R("JEE Main Mock Tests","JEE Main mock tests.")],
+ "JEE Advanced":[R("JEE Advanced PYQs","JEE Advanced previous year questions."),R("JEE Advanced Problems","Advanced-level practice problems.")]
+};
+exams.forEach(e=>{globalResources[e[1]]=[R(e[1]+" Syllabus & Notes","Concepts and formulas."),R(e[1]+" PYQs","Previous year questions."),R(e[1]+" Mock Tests","Practice tests.")]});
+
+const chapters={
+ Physics:{
+  11:["Units & Measurements","Motion in a Straight Line","Motion in a Plane","Laws of Motion","Work, Energy & Power","System of Particles & Rotational Motion","Gravitation","Mechanical Properties of Solids","Mechanical Properties of Fluids","Thermal Properties of Matter","Thermodynamics","Kinetic Theory","Oscillations","Waves"],
+  12:["Electric Charges & Fields","Electrostatic Potential & Capacitance","Current Electricity","Moving Charges & Magnetism","Magnetism & Matter","Electromagnetic Induction","Alternating Current","Electromagnetic Waves","Ray Optics & Optical Instruments","Wave Optics","Dual Nature of Radiation & Matter","Atoms","Nuclei","Semiconductor Electronics"]},
+ Chemistry:{
+  11:["Some Basic Concepts of Chemistry","Structure of Atom","Classification of Elements","Chemical Bonding","Thermodynamics","Equilibrium","Redox Reactions","Organic Chemistry — Basic Principles","Hydrocarbons"],
+  12:["Solutions","Electrochemistry","Chemical Kinetics","Coordination Compounds","Haloalkanes & Haloarenes","Alcohols, Phenols & Ethers","Aldehydes, Ketones & Carboxylic Acids","Amines","Biomolecules","d & f Block Elements"]},
+ Mathematics:{
+  11:["Sets","Relations & Functions","Trigonometric Functions","Complex Numbers","Quadratic Equations","Permutations & Combinations","Binomial Theorem","Sequences & Series","Straight Lines","Conic Sections","Limits & Derivatives","Statistics","Probability"],
+  12:["Relations & Functions","Inverse Trigonometric Functions","Matrices","Determinants","Continuity & Differentiability","Applications of Derivatives","Integrals","Applications of Integrals","Differential Equations","Vector Algebra","Three Dimensional Geometry","Probability"]}
+};
+
+const resourceTypes=["Books","Notes","Theory","Formula Sheet","Shortcuts","JEE Main PYQs","JEE Advanced PYQs","Important Questions","Different coaching modules","My Recommendation","DPPs","Question Bank","Google Drive PDFs"];
+
+/* Example: chapterResources["Physics|11|Laws of Motion|Theory"]=[{title:"Laws of Motion Theory",description:"Complete notes",link:"DRIVE_LINK"}]; */
+const chapterResources={};
+
+let currentSubject="",currentClass=11;
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+/* ================= BUILD STATIC UI ================= */
+$("liveTrack").innerHTML=[...updates,...updates].map(u=>`<span class="live-item">${esc(u)}</span>`).join("");
+
+$("vault-grid").innerHTML=vaultItems.map(v=>`
+ <div class="vault-card accent-${v[0]}" tabindex="0" onclick="${v[4]?`openGlobal('${v[4]}')`:'openProgressAnalysis()'}">
+  <div class="vault-icon">${v[1]}</div><h3>${v[2]}</h3><p>${v[3]}</p></div>`).join("");
+
+$("exam-grid").innerHTML=exams.map(e=>`
+ <div class="competitive-card"><div class="exam-icon">${e[0]}</div><h3>${e[1]==="OTHER"?"OTHER EXAMS":e[1]}</h3><p>${e[2]}</p>
+ <button onclick="openCompetitiveExam('${e[1]}')">${e[1]==="OTHER"?"Explore More →":"Open "+e[1]+" →"}</button></div>`).join("");
+
+/* ================= NAVIGATION ================= */
+function hideAllPanels(){document.querySelectorAll(".panel").forEach(p=>p.classList.remove("active"))}
+function goHome(){hideAllPanels();closeProgressAnalysis();window.scrollTo({top:0,behavior:"smooth"})}
+function showSection(id){const e=$(id);if(e)e.scrollIntoView({behavior:"smooth"})}
+function closePanel(id){$(id).classList.remove("active")}
+function reveal(id){const p=$(id);p.classList.add("active");p.scrollIntoView({behavior:"smooth"})}
+
+function openSubject(s){currentSubject=s;hideAllPanels();$("subject-title").innerText=s;reveal("subject-panel")}
+
+function openClass(n){
+ currentClass=n;hideAllPanels();
+ $("chapter-title").innerText=currentSubject+" • Class "+n;
+ const list=$("chapter-list");list.innerHTML="";
+ chapters[currentSubject][n].forEach((ch,i)=>{
+  const d=document.createElement("div");d.className="chapter";d.tabIndex=0;
+  d.onclick=()=>openChapter(ch);
+  d.innerHTML=`<span class="chapter-number">CHAPTER ${i+1}</span><span class="chapter-name">${esc(ch)}</span>`;
+  list.appendChild(d);
+ });
+ reveal("chapter-panel");
+}
+
+function openChapter(ch){
+ hideAllPanels();
+ $("chapter-resource-title").innerText=`${currentSubject} • Class ${currentClass} • ${ch}`;
+ const box=$("chapter-resources");box.innerHTML="";
+ resourceTypes.forEach(type=>{
+  const items=chapterResources[`${currentSubject}|${currentClass}|${ch}|${type}`]||[];
+  if(!items.length){
+   const c=document.createElement("div");c.className="resource-card";
+   c.innerHTML=`<span class="resource-type">${esc(type)}</span><h3>${esc(type)}</h3><p>Coming soon for ${esc(ch)}.</p><span class="resource-btn soon">Coming Soon</span>`;
+   box.appendChild(c);
+  }else items.forEach(it=>box.appendChild(createResourceCard(it,type)));
+ });
+ reveal("chapter-resource-panel");
+}
+
+function openGlobal(cat){
+ hideAllPanels();$("global-title").innerText=cat;
+ const box=$("global-resources");box.innerHTML="";
+ const items=globalResources[cat]||[];
+ if(!items.length)box.innerHTML='<div class="empty">No resources added yet.</div>';
+ else items.forEach(it=>box.appendChild(createResourceCard(it,cat)));
+ reveal("global-panel");
+}
+
+function createResourceCard(item,type){
+ const c=document.createElement("div");c.className="resource-card";
+ const ready=item.link&&item.link!==L;
+ c.innerHTML=`<span class="resource-type">${esc(type)}</span><h3>${esc(item.title)}</h3><p>${esc(item.description||"")}</p>`+
+  (ready?`<a class="resource-btn" href="${esc(item.link)}" target="_blank" rel="noopener noreferrer">Open Resource →</a>`:`<span class="resource-btn soon">Coming Soon</span>`);
+ return c;
+}
+
+function openCompetitiveExam(e){openGlobal(e)}
+
+/* ================= SEARCH ================= */
+function searchResources(scroll=false){
+ const q=$("searchInput").value.trim().toLowerCase();
+ const panel=$("search-panel"),out=$("search-results");
+ if(!q){panel.classList.remove("active");return}
+ hideAllPanels();out.innerHTML="";
+ Object.keys(globalResources).forEach(cat=>globalResources[cat].forEach(it=>{
+  if((cat+" "+it.title+" "+it.description).toLowerCase().includes(q))out.appendChild(createResourceCard(it,cat));
+ }));
+ Object.keys(chapters).forEach(sub=>Object.keys(chapters[sub]).forEach(cls=>chapters[sub][cls].forEach(ch=>{
+  if(ch.toLowerCase().includes(q)){
+   const c=document.createElement("div");c.className="resource-card";
+   c.innerHTML=`<span class="resource-type">CHAPTER</span><h3>${esc(ch)}</h3><p>${sub} • Class ${cls}</p><button class="resource-btn">Open Chapter →</button>`;
+   c.querySelector("button").onclick=()=>{currentSubject=sub;currentClass=+cls;openChapter(ch)};
+   out.appendChild(c);
+  }
+ })));
+ if(!out.children.length)out.innerHTML='<div class="empty">No matching resources found.</div>';
+ panel.classList.add("active");
+ if(scroll)setTimeout(()=>panel.scrollIntoView({behavior:"smooth",block:"start"}),100);
+}
+/* ================= PROGRESS & ANALYSIS ================= */
+const PKEY="tjh_progress";
+function loadP(){try{return JSON.parse(localStorage.getItem(PKEY))||[]}catch(e){return[]}}
+function saveP(a){try{localStorage.setItem(PKEY,JSON.stringify(a))}catch(e){}}
+function openProgressAnalysis(){$("progress-panel").classList.add("active");document.body.style.overflow="hidden";renderProgress()}
+function closeProgressAnalysis(){$("progress-panel").classList.remove("active");document.body.style.overflow=""}
+function addProgress(){
+ const name=$("pTest").value.trim(),m=parseFloat($("pMarks").value),t=parseFloat($("pTotal").value);
+ if(!name||isNaN(m)||isNaN(t)||t<=0){alert("Enter test name, marks and total marks.");return}
+ const a=loadP();
+ a.push({date:new Date().toLocaleDateString(),name,subject:$("pSubject").value,m,t,p:Math.round(m/t*1000)/10});
+ saveP(a);$("pTest").value="";$("pMarks").value="";renderProgress();
+}
+function clearProgress(){if(confirm("Delete all saved test data?")){saveP([]);renderProgress()}}
+function renderProgress(){
+ const a=loadP(),n=a.length;
+ const avg=n?a.reduce((s,x)=>s+x.p,0)/n:0,best=n?Math.max(...a.map(x=>x.p)):0,last=n?a[n-1].p:0;
+ $("sCount").innerText=n;$("sAvg").innerText=avg.toFixed(1)+"%";$("sBest").innerText=best+"%";$("sLast").innerText=last+"%";
+ let msg="Add your first test to see analysis.";
+ if(n){
+  const trend=n>1?last-a[n-2].p:0;
+  msg=`Your average is ${avg.toFixed(1)}%. `+(n>1?(trend>0?`Latest test improved by ${trend.toFixed(1)}%. Keep going.`:trend<0?`Latest test dropped by ${Math.abs(trend).toFixed(1)}%. Review your mistakes.`:"Latest test matches your previous score."):"Log more tests to see your trend.");
+ }
+ $("analysisText").innerText=msg;
+ setTimeout(()=>$("analysisBar").style.width=Math.min(avg,100)+"%",50);
+ $("progressBody").innerHTML=a.slice().reverse().map(x=>`<tr><td>${esc(x.date)}</td><td>${esc(x.name)}</td><td>${esc(x.subject)}</td><td>${x.m}/${x.t}</td><td>${x.p}%</td></tr>`).join("")||'<tr><td colspan="5">No tests logged yet.</td></tr>';
+}
+
+/* ================= CLICK COLOR (unique random per box) ================= */
+const clickColors=["#00f0ff","#00aaff","#0088ff","#0066ff","#00ffff","#00ffcc","#00ff9d","#39ff14","#84ff00","#c6ff00","#ffff00","#ffd000","#ff9d00","#ff6b00","#ff4500","#ff416c","#ff1744","#ff00aa","#ff3cac","#ff00ff","#d946ef","#a855f7","#8b5cf6","#7c3aed","#6366f1","#4f46e5","#22d3ee","#14b8a6","#10b981","#f59e0b"];
+let usedColors=[];const boxColors=new Map();
+document.addEventListener("click",e=>{
+ const box=e.target.closest(".vault-card,.subject-card,.class-card,.chapter,.resource-card,.jee-card,.competitive-card,.stat");
+ if(!box||boxColors.has(box))return;
+ let free=clickColors.filter(c=>!usedColors.includes(c));
+ if(!free.length){usedColors=[];free=[...clickColors]}
+ const c=free[Math.floor(Math.random()*free.length)];
+ usedColors.push(c);boxColors.set(box,c);
+ box.style.setProperty("--click-color",c);box.classList.add("box-selected");
+});
+
+/* Enter key on focused cards */
+document.addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.matches(".vault-card,.chapter"))e.target.click()});
+
+/* ================= SCROLL EFFECTS ================= */
+window.addEventListener("scroll",()=>{
+ const h=document.documentElement,max=h.scrollHeight-h.clientHeight;
+ $("scroll-bar").style.width=(max>0?h.scrollTop/max*100:0)+"%";
+ $("to-top").classList.toggle("show",h.scrollTop>500);
+},{passive:true});
+
+/* ================= WELCOME SCREEN ================= */
+window.addEventListener("load",()=>{
+ const w=$("welcome-screen");if(!w)return;
+ setTimeout(()=>{w.classList.add("hide");setTimeout(()=>w.remove(),700)},2200);
+});
+</script>
+</body>
+</html>
